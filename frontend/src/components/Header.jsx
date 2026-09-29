@@ -99,19 +99,19 @@ export default function Header({ activePage, currentUser, onLogout, setActivePag
 
   return (
     <>
-      <header className="h-16 border-b border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-[#0b0f17]/95 backdrop-blur-md px-3.5 sm:px-6 flex items-center justify-between sticky top-0 z-30 font-sans transition-colors">
+      <header className="fixed top-0 left-0 right-0 md:relative md:top-auto md:left-auto md:right-auto md:sticky md:top-0 h-16 border-b border-slate-200 dark:border-slate-800/80 bg-white/95 dark:bg-[#0b0f17]/95 backdrop-blur-md px-3.5 sm:px-6 flex items-center justify-between z-30 font-sans transition-colors shadow-xs">
         <div className="flex items-center gap-2">
           {/* Mobile Hamburger Drawer Menu Toggle */}
           <button
             type="button"
             onClick={onToggleMobileMenu}
-            className="md:hidden p-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-900 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 transition cursor-pointer"
+            className="md:hidden p-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-900 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 transition active:scale-95 cursor-pointer touch-manipulation"
             title="Open Mobile Navigation Menu"
           >
             <Menu className="h-5 w-5" />
           </button>
 
-          <h2 className="text-sm sm:text-base font-bold text-slate-900 dark:text-slate-100 tracking-tight capitalize font-outfit truncate max-w-[170px] sm:max-w-none">
+          <h2 className="text-sm sm:text-base font-bold text-slate-900 dark:text-slate-100 tracking-tight capitalize font-outfit truncate max-w-[140px] xs:max-w-[180px] sm:max-w-none">
             {titles[activePage] || 'Dashboard'}
           </h2>
         </div>

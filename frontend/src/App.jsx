@@ -208,7 +208,7 @@ export default function App() {
   };
 
   return (
-    <div className={`flex min-h-screen font-sans selection:bg-blue-500 selection:text-white transition-colors duration-300 pb-16 md:pb-0 ${
+    <div className={`flex min-h-screen font-sans selection:bg-blue-500 selection:text-white transition-colors duration-300 ${
       theme === 'light' ? 'light-theme bg-slate-50 text-slate-900' : 'dark dark-theme bg-[#0b0f17] text-slate-100'
     }`}>
       <Sidebar 
@@ -217,7 +217,7 @@ export default function App() {
         isMobileOpen={isMobileOpen}
         setIsMobileOpen={setIsMobileOpen}
       />
-      <div className="flex-1 flex flex-col min-w-0 overflow-x-hidden">
+      <div className="flex-1 flex flex-col min-w-0 pt-16 pb-16 md:pt-0 md:pb-0 overflow-x-hidden">
         <Header 
           activePage={activePage} 
           currentUser={currentUser} 
@@ -232,8 +232,8 @@ export default function App() {
         </main>
       </div>
 
-      {/* ─── MOBILE STICKY BOTTOM NAVIGATION BAR ─── */}
-      <nav className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white/95 dark:bg-[#0e131f]/95 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 flex items-center justify-around py-2 px-1 shadow-md">
+      {/* ─── MOBILE STABLE FIXED BOTTOM NAVIGATION BAR ─── */}
+      <nav className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white/95 dark:bg-[#0e131f]/95 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 flex items-center justify-around h-16 px-1 shadow-lg pb-[env(safe-area-inset-bottom,0px)] transform-gpu select-none">
         {[
           { id: 'dashboard', label: 'Overview', icon: LayoutDashboard },
           { id: 'agent', label: 'AI Strategist', icon: Bot },
@@ -247,14 +247,14 @@ export default function App() {
             <button
               key={item.id}
               onClick={() => setActivePage(item.id)}
-              className={`flex flex-col items-center gap-1 py-1 px-2.5 rounded-xl text-[10px] font-semibold transition cursor-pointer ${
+              className={`flex flex-col items-center justify-center gap-0.5 py-1 px-2.5 rounded-xl text-[10px] font-semibold transition-all cursor-pointer active:scale-95 touch-manipulation ${
                 isActive
                   ? 'text-blue-600 dark:text-blue-400 font-bold'
                   : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               <Icon className={`h-5 w-5 ${isActive ? 'text-blue-600 dark:text-blue-400 scale-110' : 'text-slate-400'}`} />
-              <span>{item.label}</span>
+              <span className="truncate max-w-[62px]">{item.label}</span>
             </button>
           );
         })}
